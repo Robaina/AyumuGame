@@ -2,13 +2,12 @@
    Semidan Robaina Estevez
 */
 let nrows, ncols;
-let minGridSize = 3;
-let maxGridSize = 3;
+let minGridSize = 6;
+let maxGridSize = 8;
 
 function displayGrid () {
 
   let gameGrid = document.getElementById("game_grid");
-
   if (window.innerWidth > window.innerHeight) {
     nrows = minGridSize;
     ncols = maxGridSize;
@@ -16,6 +15,11 @@ function displayGrid () {
     nrows = maxGridSize;
     ncols = minGridSize;
   }
+
+  gameGrid.style.setProperty("grid-template-columns",
+    "repeat(" + ncols + ", auto)");
+  gameGrid.style.setProperty("grid-template-rows",
+    "repeat(" + nrows + ", auto)");
 
   cells = [];
   numberedCells = getRandomSample(minInt=0, maxInt=nrows*ncols - 1, size=9);
