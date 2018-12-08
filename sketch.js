@@ -6,6 +6,7 @@ let minGridSize = 6;
 let maxGridSize = 8;
 let numberCounter = 1;
 
+// document.addEventListener("click", hideCells);
 function displayGrid () {
 
   let gameGrid = document.getElementById("game_grid");
@@ -35,21 +36,16 @@ function displayGrid () {
       cell.appendChild(cellNumber);
       cell.setAttribute("id", "n" + number);
       cell.addEventListener("click", countCells);
-      // cell.addEventListener("click", hideCells);
-    } else if (i == nrows * ncols - 1){
-      cell.setAttribute("id", "start-cell");
-      cell.addEventListener("click", hideCells);
+      if (number == 1) {
+        cell.addEventListener("click", hideCells);
+      }
     } else {
       cell.setAttribute("class", "grid-cell");
       cell.style.visibility = "hidden";
     }
-
     gameGrid.appendChild(cell);
   }
-
 }
-
-// document.addEventListener("click", hideCells);
 
 function getRandomSample(minInt, maxInt, size) {
   let numbers = []
@@ -71,7 +67,6 @@ function hideCells(event) {
     cell.style.color = "rgba(0, 0, 0, 0)";
     cell.style["background-color"] = "rgba(255, 255, 255, 0.8)";
   }
-  document.getElementById("start-cell").style.visibility = "hidden";
 }
 
 function countCells(event) {
@@ -85,4 +80,5 @@ function countCells(event) {
     }
   }
   numberCounter ++;
+
 }
