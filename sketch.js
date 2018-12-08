@@ -4,6 +4,7 @@
 let nrows, ncols;
 let minGridSize = 6;
 let maxGridSize = 8;
+let numberCounter = 1;
 
 function displayGrid () {
 
@@ -21,28 +22,34 @@ function displayGrid () {
   gameGrid.style.setProperty("grid-template-rows",
     "repeat(" + nrows + ", auto)");
 
-  cells = [];
   numberedCells = getRandomSample(minInt=0, maxInt=nrows*ncols - 1, size=9);
   numberLabels = getRandomSample(minInt=1, maxInt=9, size=9);
 
   for (let i = 0; i < nrows * ncols; i++) {
     let cell = document.createElement("div");
-    cell.setAttribute("class", "grid-cell");
 
     if (numberedCells.includes(i)) {
+      cell.setAttribute("class", "numbered-grid-cell");
       let number = numberLabels.pop();
       let cellNumber = document.createTextNode(number);
       cell.appendChild(cellNumber);
       cell.setAttribute("id", "n" + number);
+      cell.addEventListener("click", countCells);
+      // cell.addEventListener("click", hideCells);
+    } else if (i == nrows * ncols - 1){
+      cell.setAttribute("id", "start-cell");
+      cell.addEventListener("click", hideCells);
     } else {
+      cell.setAttribute("class", "grid-cell");
       cell.style.visibility = "hidden";
     }
 
     gameGrid.appendChild(cell);
-    cells.push(cell);
   }
 
 }
+
+// document.addEventListener("click", hideCells);
 
 function getRandomSample(minInt, maxInt, size) {
   let numbers = []
@@ -56,4 +63,26 @@ function getRandomSample(minInt, maxInt, size) {
     randomSample.push(sampledNumber);
   }
   return randomSample
+}
+
+function hideCells(event) {
+  cells = document.getElementsByClassName("numbered-grid-cell");
+  for (cell of cells){
+    cell.style.color = "rgba(0, 0, 0, 0)";
+    cell.style["background-color"] = "rgba(255, 255, 255, 0.8)";
+  }
+  document.getElementById("start-cell").style.visibility = "hidden";
+}
+
+function countCells(event) {
+  if (event.target.id == "n" + numberCounter.toString()) {
+    event.target.style.visibility = "hidden";
+  } else {
+    cells = document.getElementsByClassName("numbered-grid-cell");
+    for (cell of cells){
+      cell.style.color = "rgba(0, 0, 0, 0)";
+      cell.style["background-color"] = "rgba(0, 0, 0, 0)";
+    }
+  }
+  numberCounter ++;
 }
