@@ -1,4 +1,5 @@
-# A colorful N-Möbius strip
+# Ayumu's game
 <img style="margin:0px auto;display:block" src="/imgs/Sketch.png" alt="Responsive image" width=450>
 <p></p>
-Experiments with the p5.js library (https://www.p5js.org). A colorful N-Möbius strip which progressively folds and unfolds. Touch screen or click mouse to pause/resume the animation.
+<a href="https://en.wikipedia.org/wiki/Ayumu_(chimpanzee)">Ayumu</a>
+Inspired by the memory games that Chimp <a href="https://en.wikipedia.org/wiki/Ayumu_(chimpanzee)">Ayumu</a> plays in the Primate Research Institute of Kyoto University.
