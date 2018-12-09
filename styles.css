@@ -4,13 +4,13 @@ body, html {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
 }
 #game_grid {
   display: grid;
   background-color: rgba(0, 0, 0, 1);
-  padding: 2.5%;
-  height: 95%;
-  width: 100%;
+  margin: 2%;
+  height: 96%;
 }
 .numbered-grid-cell {
   background-color: rgba(255, 255, 255, 0);
@@ -25,5 +25,4 @@ body, html {
 .grid-cell {
   border: 1px solid rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0);
-  /* padding: 20px; */
 }
