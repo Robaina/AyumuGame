@@ -1,15 +1,18 @@
 /* Ayumu's game
+Sound clips:
+Chimpanzee: recorded by Mike Koenig (soundbible.com)
+Tick: recorded by DeepFrozenApps (soundbible.com)
    Semidan Robaina Estevez
 */
 let nrows, ncols;
 let minGridSize = 6;
 let maxGridSize = 8;
-let numberCounter = 1;
-let firstTouch = false;
+let firstTouch, numberCounter;
 
-// document.addEventListener("click", hideCells);
 function displayGrid () {
 
+  firstTouch = false;
+  numberCounter = 1;
   let gameGrid = document.getElementById("game_grid");
   if (window.innerWidth > window.innerHeight) {
     nrows = minGridSize;
@@ -37,7 +40,7 @@ function displayGrid () {
       cell.appendChild(cellNumber);
       cell.setAttribute("id", "n" + number);
       if (number == 1) {
-        cell.addEventListener("click", hideCells);
+        cell.addEventListener("click", coverCells);
       }
       cell.addEventListener("click", countCells);
     } else {
@@ -62,11 +65,12 @@ function getRandomSample(minInt, maxInt, size) {
   return randomSample
 }
 
-function hideCells(event) {
+function coverCells(event) {
   cells = document.getElementsByClassName("numbered-grid-cell");
   for (cell of cells){
     cell.style.color = "rgba(0, 0, 0, 0)";
-    cell.style["background-color"] = "rgba(255, 255, 255, 0.8)";
+    // cell.style["background-color"] = "rgba(255, 255, 255, 0.8)";
+    cell.style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
 }
