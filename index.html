@@ -11,7 +11,6 @@
 
 	<title>Ayumu's game</title>
 	<link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon.ico">
-	<script src="sketch.js"></script>
   <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -19,6 +18,19 @@
 <body onload="displayGrid()">
 
 	<div id="game_grid"></div>
+
+	<audio id="chimpAudio">
+	  <source src="sounds/chimp.mp3" type="audio/mpeg">
+	  Your browser does not support the audio element.
+	</audio>
+	<audio id="tickAudio">
+		<source src="sounds/tick.mp3" type="audio/mpeg">
+		Your browser does not support the audio element.
+	</audio>
+
+	<button id="reset" onmousedown="displayGrid()" ontouchend="displayGrid()">Reset</button>
+
+	<script src="sketch.js"></script>
 
 	<a href="https://github.com/Robaina/AyumuGame" class="github-corner" id="github" aria-label="View source on Github">
 	<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">

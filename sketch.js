@@ -8,6 +8,8 @@ let nrows, ncols;
 let minGridSize = 6;
 let maxGridSize = 8;
 let firstTouch, numberCounter;
+let chimp = document.getElementById("chimpAudio");
+let tick = document.getElementById("tickAudio");
 
 function displayGrid () {
 
@@ -69,7 +71,6 @@ function coverCells(event) {
   cells = document.getElementsByClassName("numbered-grid-cell");
   for (cell of cells){
     cell.style.color = "rgba(0, 0, 0, 0)";
-    // cell.style["background-color"] = "rgba(255, 255, 255, 0.8)";
     cell.style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
@@ -79,11 +80,13 @@ function countCells(event) {
   if (firstTouch) {
     if (event.target.id == "n" + numberCounter.toString()) {
       event.target.style.visibility = "hidden";
+      tick.play();
     } else {
       cells = document.getElementsByClassName("numbered-grid-cell");
       for (cell of cells){
         cell.style.color = "rgba(0, 0, 0, 0)";
-        cell.style["background-color"] = "rgba(0, 0, 0, 0)";
+        // cell.style["background-image"] = "none";
+        chimp.play();
       }
     }
     numberCounter ++;
