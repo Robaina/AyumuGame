@@ -8,7 +8,7 @@ Applause: recorded by Yannick Lemieux (soundbible.com)
 let nrows, ncols;
 let minGridSize = 6;
 let maxGridSize = 8;
-let firstTouch, numberCounter;
+let firstTouch, numberCounter, startTime, endTime;
 let chimp = document.getElementById("chimpAudio");
 let tick = document.getElementById("tickAudio");
 let applause = document.getElementById("applauseAudio");
@@ -76,6 +76,7 @@ function coverCells(event) {
     cell.style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
+  startTime = new Date();
 }
 
 function countCells(event) {
@@ -84,21 +85,30 @@ function countCells(event) {
       event.target.style.visibility = "hidden";
       tick.play();
       if (event.target.id == "n9") {
+        endTime = new Date();
         applause.play();
         document.getElementById("win").style.visibility = "visible";
+        document.getElementById("reset").style.visibility = "visible";
+        document.getElementById("time").innerHTML = "completed in " + (endTime - startTime) / 1000 +  " seconds";
       }
     } else {
       cells = document.getElementsByClassName("numbered-grid-cell");
-      // for (cell of cells){
-      //   // cell.style.color = "rgba(0, 0, 0, 0)";
-      //   // cell.style["background-image"] = "none";
-      // }
+      for (cell of cells){
+        cell.style.color = "rgba(0, 0, 0, 0)";
+        cell.style["background-image"] = "none";
+      }
       chimp.play();
+      document.getElementById("loose").style.visibility = "visible";
+      document.getElementById("reset").style.visibility = "visible";
     }
-    numberCounter ++;
+    numberCounter++;
   }
 }
 
-function endScreen(){
-
+function resetGrid() {
+  for (id_name of ["win", "loose", "time", "reset"]) {
+    document.getElementById(id_name).style.visibility = "hidden";
+  }
+  document.getElementById("game_grid").innerHTML = "";
+  displayGrid();
 }

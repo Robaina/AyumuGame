@@ -45,11 +45,18 @@ body, html {
   cursor: pointer;
   border-radius: 12px;
 }
-#win {
+.message {
   font-size: 800%;
   color: white;
   position: absolute;
-  top: 30%;
+  top: 25%;
   left: 30%;
   visibility: hidden;
+}
+#time {
+  font-size: 300%;
+  color: white;
+  position: absolute;
+  top: 47%;
+  left: 30%;
 }

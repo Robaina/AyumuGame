@@ -19,7 +19,9 @@
 
 	<div id="game_grid"></div>
 
-	<p id="win">Awesome!</p>
+	<p class="message" id="win">Awesome!</p>
+	<p id="time"></p>
+	<p class="message" id="loose">You loose!</p>
 
 	</div>
 
@@ -36,7 +38,7 @@
 		Your browser does not support the audio element.
 	</audio>
 
-	<button id="reset" onmousedown="displayGrid()" ontouchend="displayGrid()">Reset</button>
+	<button id="reset" onmousedown="resetGrid()" ontouchend="resetGrid()">Reset</button>
 
 	<script src="sketch.js"></script>
 
