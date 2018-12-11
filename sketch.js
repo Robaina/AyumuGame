@@ -76,6 +76,7 @@ function coverCells(event) {
     cell.style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
+  changeVisibility(elements=["github"], type="hidden");
   startTime = new Date();
 }
 
@@ -87,8 +88,7 @@ function countCells(event) {
       if (event.target.id == "n9") {
         endTime = new Date();
         applause.play();
-        document.getElementById("win").style.visibility = "visible";
-        document.getElementById("reset").style.visibility = "visible";
+        changeVisibility(elements=["win", "reset"], type="visible");
         document.getElementById("time").innerHTML = "completed in " + (endTime - startTime) / 1000 +  " seconds";
       }
     } else {
@@ -98,17 +98,21 @@ function countCells(event) {
         cell.style["background-image"] = "none";
       }
       chimp.play();
-      document.getElementById("loose").style.visibility = "visible";
-      document.getElementById("reset").style.visibility = "visible";
+      changeVisibility(elements=["loose", "reset"], type="visible");
     }
     numberCounter++;
   }
 }
 
 function resetGrid() {
-  for (id_name of ["win", "loose", "time", "reset"]) {
-    document.getElementById(id_name).style.visibility = "hidden";
-  }
   document.getElementById("game_grid").innerHTML = "";
+  changeVisibility(elements=["win", "loose", "time", "reset"], type="hidden");
+   changeVisibility(elements=["github"], type="visible");
   displayGrid();
+}
+
+function changeVisibility(elements=NULL, type="visible") {
+  for (id_name of elements) {
+    document.getElementById(id_name).style.visibility = type;
+  }
 }
