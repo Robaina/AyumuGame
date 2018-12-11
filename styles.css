@@ -14,10 +14,10 @@ body, html {
 }
 .numbered-grid-cell {
   background-color: rgba(255, 255, 255, 0);
-  background-size: 90%;
+  background-size: 70%;
   background-repeat: no-repeat;
   color: rgba(255, 255, 255, 1);
-  font-size: 500%;
+  font-size: 450%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,4 +44,12 @@ body, html {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 12px;
+}
+#win {
+  font-size: 800%;
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  visibility: hidden;
 }

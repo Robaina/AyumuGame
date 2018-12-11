@@ -2,6 +2,7 @@
 Sound clips:
 Chimpanzee: recorded by Mike Koenig (soundbible.com)
 Tick: recorded by DeepFrozenApps (soundbible.com)
+Applause: recorded by Yannick Lemieux (soundbible.com)
    Semidan Robaina Estevez
 */
 let nrows, ncols;
@@ -10,6 +11,7 @@ let maxGridSize = 8;
 let firstTouch, numberCounter;
 let chimp = document.getElementById("chimpAudio");
 let tick = document.getElementById("tickAudio");
+let applause = document.getElementById("applauseAudio");
 
 function displayGrid () {
 
@@ -81,14 +83,22 @@ function countCells(event) {
     if (event.target.id == "n" + numberCounter.toString()) {
       event.target.style.visibility = "hidden";
       tick.play();
+      if (event.target.id == "n9") {
+        applause.play();
+        document.getElementById("win").style.visibility = "visible";
+      }
     } else {
       cells = document.getElementsByClassName("numbered-grid-cell");
-      for (cell of cells){
-        cell.style.color = "rgba(0, 0, 0, 0)";
-        // cell.style["background-image"] = "none";
-        chimp.play();
-      }
+      // for (cell of cells){
+      //   // cell.style.color = "rgba(0, 0, 0, 0)";
+      //   // cell.style["background-image"] = "none";
+      // }
+      chimp.play();
     }
     numberCounter ++;
   }
+}
+
+function endScreen(){
+
 }
