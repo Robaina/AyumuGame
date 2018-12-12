@@ -12,11 +12,24 @@ let firstTouch, numberCounter, startTime, endTime;
 let chimp = document.getElementById("chimpAudio");
 let tick = document.getElementById("tickAudio");
 let applause = document.getElementById("applauseAudio");
+let playSound = true;
+
+function startGame () {
+  displayGrid();
+  changeCSSproperty(elements=["start-screen", "github"], "opacity", 0);
+  changeCSSproperty(elements=["start-screen", "github"], "display",
+   "none");
+}
 
 function displayGrid () {
 
+  startTime = new Date();
   firstTouch = false;
   numberCounter = 1;
+  for (let id_name of ["start", "sound", "reset"]) {
+    document.getElementById(id_name).disabled= true;
+  }
+
   let gameGrid = document.getElementById("game_grid");
   if (window.innerWidth > window.innerHeight) {
     nrows = minGridSize;
@@ -45,8 +58,10 @@ function displayGrid () {
       cell.setAttribute("id", "n" + number);
       if (number == 1) {
         cell.addEventListener("click", coverCells);
+        cell.addEventListener("touch", coverCells);
       }
       cell.addEventListener("click", countCells);
+      cell.addEventListener("touch", countCells);
     } else {
       cell.setAttribute("class", "grid-cell");
       cell.style.visibility = "hidden";
@@ -76,19 +91,22 @@ function coverCells(event) {
     cell.style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
-  changeVisibility(elements=["github"], type="hidden");
-  startTime = new Date();
 }
 
 function countCells(event) {
   if (firstTouch) {
     if (event.target.id == "n" + numberCounter.toString()) {
       event.target.style.visibility = "hidden";
-      tick.play();
+      if (playSound === true){
+        tick.play();
+      }
       if (event.target.id == "n9") {
         endTime = new Date();
-        applause.play();
-        changeVisibility(elements=["win", "reset"], type="visible");
+        if (playSound === true) {
+          applause.play();
+        }
+        changeCSSproperty(elements=["win", "reset", "time"], "visibility",
+         "visible");
         document.getElementById("time").innerHTML = "completed in " + (endTime - startTime) / 1000 +  " seconds";
       }
     } else {
@@ -97,22 +115,39 @@ function countCells(event) {
         cell.style.color = "rgba(0, 0, 0, 0)";
         cell.style["background-image"] = "none";
       }
-      chimp.play();
-      changeVisibility(elements=["loose", "reset"], type="visible");
+      if (playSound === true) {
+        chimp.play();
+      }
+      changeCSSproperty(elements=["loose", "reset"], "visibility",
+       "visible");
     }
+    document.getElementById("reset").disabled= false;
     numberCounter++;
   }
 }
 
 function resetGrid() {
   document.getElementById("game_grid").innerHTML = "";
-  changeVisibility(elements=["win", "loose", "time", "reset"], type="hidden");
-   changeVisibility(elements=["github"], type="visible");
+  changeCSSproperty(elements=["win", "loose", "time", "reset"],
+   "visibility", "hidden");
   displayGrid();
 }
 
-function changeVisibility(elements=NULL, type="visible") {
+function changeCSSproperty(elements=NULL, property="visibility",
+ value="visible") {
   for (id_name of elements) {
-    document.getElementById(id_name).style.visibility = type;
+    document.getElementById(id_name).style[property] = value;
+  }
+}
+
+function changeSoundState() {
+  playSound = !playSound;
+  soundButton = document.getElementById("sound");
+  if (playSound) {
+    soundButton.style["background-color"] = "rgb(12, 165, 170)";
+    soundButton.innerHTML = "Sound: On";
+  } else {
+    soundButton.style["background-color"] = "rgb(159, 159, 159)";
+    soundButton.innerHTML = "Sound: Off";
   }
 }

@@ -6,6 +6,48 @@ body, html {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
 }
+#start-screen {
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  color: rgba(255, 255, 255, 1);
+  opacity: 1;
+  transition: opacity 2s;
+}
+#game-title {
+  position: relative;
+  font-size: 7vmax;
+}
+#soundInput {
+  position: relative;
+  top: 1%;
+}
+#soundToggle {
+  position: absolute;
+  top: 0%;
+}
+#soundPar {
+  font-size: 2vmax;
+  top: 0%;
+  margin-block-end: 0%
+}
+#start {
+  position: relative;
+  top: 1em;
+  left: 0%;
+}
+#sound {
+  position: relative;
+  top: 1em;
+  left: 0%;
+  border-top: 1em;
+}
+#monkeypic {
+  position: absolute;
+  left: 40%;
+  top: 50%;
+  height: 25vmax;
+}
 #game_grid {
   display: grid;
   background-color: rgba(0, 0, 0, 1);
@@ -21,27 +63,30 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .grid-cell {
   border: 1px solid rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0);
 }
-#reset {
-  visibility: hidden;
-  padding: 20px;
-  font-size: 2vmax;
+.button {
+  padding: 1vmax;
+  font-size: 2.5vmax;
   position: absolute;
   top: 10%;
   left: 4%;
-  background-color: #ec5425;
+  background-color: rgb(12, 165, 170);
   border: none;
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
+  display: block;
+  margin: 1em 0em;
   cursor: pointer;
   border-radius: 12px;
+}
+#reset {
+  visibility: hidden;
 }
 .message {
   font-size: 8vmax;
@@ -55,6 +100,37 @@ body, html {
   font-size: 4vmax;
   color: white;
   position: absolute;
-  top: 47%;
+  top: 45%;
   left: 30%;
+}
+#github {
+  opacity: 1;
+  transition: opacity 2s;
+}
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0)
+  }
+
+  20%, 60% {
+    transform: rotate(-25deg)
+  }
+
+  40%, 80% {
+    transform: rotate(10deg)
+  }
+}
+
+@media (max-width:500px) {
+  .github-corner:hover .octo-arm {
+    animation: none
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+  }
 }

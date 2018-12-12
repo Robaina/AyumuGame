@@ -15,7 +15,14 @@
 
 </head>
 
-<body onload="displayGrid()">
+<body>
+
+  <div id="start-screen">
+		<h1 id="game-title">Ayumu's game</h1>
+    <button class="button" id="sound" onclick="changeSoundState()" ontouch="changeSoundState()">Sound: On</button>
+		<button class="button" id="start" onclick="startGame()" ontouch="startGame()">Start</button>
+		<div class="container"> <img id="monkeypic" src="imgs/chimp.png" alt="Responsive image"> </div>
+  </div>
 
 	<div id="game_grid"></div>
 
@@ -36,10 +43,11 @@
 		Your browser does not support the audio element.
 	</audio>
 
-	<button id="reset" onmousedown="resetGrid()" ontouchend="resetGrid()">Reset</button>
+	<button class="button" id="reset" onmousedown="resetGrid()" ontouchend="resetGrid()">Reset</button>
 
 	<script src="sketch.js"></script>
 
+<!-- GitHub ribbon by Tim Holman (http://tholman.com) -->
 	<a href="https://github.com/Robaina/AyumuGame" class="github-corner" id="github" aria-label="View source on Github">
 	<svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
 		<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
