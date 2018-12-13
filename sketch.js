@@ -39,6 +39,7 @@ function startGame () {
     tick.play();
   }
   changeCSSproperty(elements=["start-box", "github"], "display", "none");
+  changeCSSproperty(["ringButton"], "visibility", "visible");
   displayGrid();
 }
 
@@ -66,10 +67,6 @@ function displayGrid () {
       let cellNumber = document.createTextNode(number);
       cell.appendChild(cellNumber);
       cell.setAttribute("id", "n" + number);
-      if (number == 1) {
-        cell.addEventListener("click", coverCells);
-        cell.addEventListener("touch", coverCells);
-      }
       cell.addEventListener("click", countCells);
       cell.addEventListener("touch", countCells);
     } else {
@@ -95,6 +92,10 @@ function getRandomSample(minInt, maxInt, size) {
 }
 
 function coverCells(event) {
+  if (playSound){
+    tick.play();
+  }
+  changeCSSproperty(["ringButton"], "visibility", "hidden");
   cells = document.getElementsByClassName("numbered-grid-cell");
   for (let i = 0; i < cells.length; i++){
     cells[i].style.color = "rgba(0, 0, 0, 0)";
@@ -115,7 +116,7 @@ function countCells(event) {
         if (playSound) {
           applause.play();
         }
-        changeCSSproperty(elements=["win", "reset", "time"], "visibility",
+        changeCSSproperty(elements=["win", "reset", "start-screen", "time"], "visibility",
          "visible");
         document.getElementById("time").innerHTML = "completed in " + (endTime - startTime) / 1000 +  " seconds";
       }
@@ -128,10 +129,11 @@ function countCells(event) {
       if (playSound) {
         chimp.play();
       }
-      changeCSSproperty(elements=["lose", "reset"], "visibility",
-       "visible");
+      changeCSSproperty(elements=["lose", "reset", "start-screen"],
+       "visibility", "visible");
     }
     document.getElementById("reset").disabled= false;
+    document.getElementById("start-screen").disabled= false;
     numberCounter++;
   }
 }
@@ -141,7 +143,18 @@ function resetGrid() {
     tick.play();
   }
   document.getElementById("game_grid").innerHTML = "";
-  changeCSSproperty(elements=["win", "lose", "time", "reset"],
+  changeCSSproperty(elements=["ringButton"], "visibility", "visible");
+  changeCSSproperty(elements=["win", "lose", "time", "reset", "start-screen"],
+   "visibility", "hidden");
+  displayGrid();
+}
+
+function goToStart() {
+  if (playSound){
+    tick.play();
+  }
+  document.getElementById("game_grid").innerHTML = "";
+  changeCSSproperty(elements=["win", "lose", "time", "reset", "start-screen"],
    "visibility", "hidden");
   initialize();
 }

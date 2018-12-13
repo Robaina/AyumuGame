@@ -21,7 +21,7 @@
 		<h1 id="game-title">Ayumu's game</h1>
 		<button class="button" id="full-screen" onclick="openFullscreen()" ontouch="openFullscreen()" >Fullscreen</button>
     <button class="button" id="sound" onclick="changeSoundState()" ontouch="changeSoundState()">Sound</button>
-		<button class="button" id="start" onclick="startGame()" ontouch="startGame()">Start</button>
+		<button class="button" id="start" onclick="startGame()" ontouch="startGame()">Play</button>
 		<div class="container"> <img id="monkeypic" src="imgs/chimp.png" alt="Responsive image"> </div>
   </div>
 
@@ -44,7 +44,10 @@
 		Your browser does not support the audio element.
 	</audio>
 
-	<button class="button" id="reset" onmousedown="resetGrid()" ontouchend="resetGrid()">Reset</button>
+	<button class="button" id="reset" onclick="resetGrid()" ontouch="resetGrid()">Reset</button>
+	<button class="button" id="start-screen" onclick="goToStart()" ontouch="gotToStart()">Start</button>
+	<button class="ring" id="ringButton" onclick="coverCells()" ontouch="coverCells()"></button>
+
 
 <!-- GitHub ribbon by Tim Holman (http://tholman.com) -->
 <div id="github">
