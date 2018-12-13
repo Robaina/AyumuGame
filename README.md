@@ -5,4 +5,4 @@ Inspired by the memory games that Chimp <a href="https://en.wikipedia.org/wiki/A
 
 Watch Ayumu in action!
 
-<a href="https://www.youtube.com/watch?v=JkNV0rSndJ0"><img style="margin:0px auto;display:block" src="/imgs/Ayumu.png" alt="Responsive image" width=450></a>
+<a href="https://www.youtube.com/watch?v=JkNV0rSndJ0" target="_blank"><img style="margin:0px auto;display:block" src="/imgs/Ayumu.png" alt="Responsive image" width=450></a>
