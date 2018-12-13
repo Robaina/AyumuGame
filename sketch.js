@@ -13,26 +13,30 @@ let chimp = document.getElementById("chimpAudio");
 let tick = document.getElementById("tickAudio");
 let applause = document.getElementById("applauseAudio");
 let playSound = true;
+let fullScreen = false;
 
-// Adjust screen to preferred orientation
-let startBox = document.getElementById("start-box");
-if (window.innerWidth > window.innerHeight) {
-  nrows = minGridSize;
-  ncols = maxGridSize;
-  startBox.style.left = "28vmax";
-  startBox.style.top = "10vmin";
-} else {
-  nrows = maxGridSize;
-  ncols = minGridSize;
-  startBox.style.left = "15vmin";
-  startBox.style.top = "22vmax";
+function initialize() {
+  // Adjust screen to preferred orientation
+  let startBox = document.getElementById("start-box");
+  if (window.innerWidth > window.innerHeight) {
+    nrows = minGridSize;
+    ncols = maxGridSize;
+    startBox.style.left = "28vmax";
+    startBox.style.top = "10vmin";
+  } else {
+    nrows = maxGridSize;
+    ncols = minGridSize;
+    startBox.style.left = "15vmin";
+    startBox.style.top = "22vmax";
+  }
+   changeCSSproperty(elements=["start-box", "github"], "display", "initial");
 }
 
+initialize();
+
 function startGame () {
+  changeCSSproperty(elements=["start-box", "github"], "display", "none");
   displayGrid();
-  changeCSSproperty(elements=["start-box", "github"], "opacity", 0);
-  changeCSSproperty(elements=["start-box", "github"], "display",
-   "none");
 }
 
 function displayGrid () {
@@ -40,9 +44,6 @@ function displayGrid () {
   startTime = new Date();
   firstTouch = false;
   numberCounter = 1;
-  for (let id_name of ["start", "sound", "reset"]) {
-    document.getElementById(id_name).disabled= true;
-  }
 
   let gameGrid = document.getElementById("game_grid");
   gameGrid.style.setProperty("grid-template-columns",
@@ -136,7 +137,7 @@ function resetGrid() {
   document.getElementById("game_grid").innerHTML = "";
   changeCSSproperty(elements=["win", "loose", "time", "reset"],
    "visibility", "hidden");
-  displayGrid();
+  initialize();
 }
 
 function changeCSSproperty(elements=NULL, property="visibility",
@@ -151,9 +152,37 @@ function changeSoundState() {
   soundButton = document.getElementById("sound");
   if (playSound) {
     soundButton.style["background-color"] = "rgb(12, 165, 170)";
-    soundButton.innerHTML = "Sound: On";
   } else {
     soundButton.style["background-color"] = "rgb(159, 159, 159)";
-    soundButton.innerHTML = "Sound: Off";
+  }
+}
+
+function openFullscreen() {
+  fullScreen = !fullScreen;
+  fullScreenButton = document.getElementById("full-screen");
+  let elem = document.documentElement;
+
+  if (fullScreen) {
+    fullScreenButton.style["background-color"] = "rgb(12, 165, 170)";
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) {
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) {
+      elem.msRequestFullscreen();
+    }
+  } else {
+    fullScreenButton.style["background-color"] = "rgb(159, 159, 159)";
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+    }
   }
 }
