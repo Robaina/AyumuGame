@@ -14,10 +14,24 @@ let tick = document.getElementById("tickAudio");
 let applause = document.getElementById("applauseAudio");
 let playSound = true;
 
+// Adjust screen to preferred orientation
+let startBox = document.getElementById("start-box");
+if (window.innerWidth > window.innerHeight) {
+  nrows = minGridSize;
+  ncols = maxGridSize;
+  startBox.style.left = "28vmax";
+  startBox.style.top = "10vmin";
+} else {
+  nrows = maxGridSize;
+  ncols = minGridSize;
+  startBox.style.left = "18vmin";
+  startBox.style.top = "22vmax";
+}
+
 function startGame () {
   displayGrid();
-  changeCSSproperty(elements=["start-screen", "github"], "opacity", 0);
-  changeCSSproperty(elements=["start-screen", "github"], "display",
+  changeCSSproperty(elements=["start-box", "github"], "opacity", 0);
+  changeCSSproperty(elements=["start-box", "github"], "display",
    "none");
 }
 
@@ -31,14 +45,6 @@ function displayGrid () {
   }
 
   let gameGrid = document.getElementById("game_grid");
-  if (window.innerWidth > window.innerHeight) {
-    nrows = minGridSize;
-    ncols = maxGridSize;
-  } else {
-    nrows = maxGridSize;
-    ncols = minGridSize;
-  }
-
   gameGrid.style.setProperty("grid-template-columns",
     "repeat(" + ncols + ", auto)");
   gameGrid.style.setProperty("grid-template-rows",

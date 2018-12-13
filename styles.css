@@ -6,10 +6,8 @@ body, html {
     overflow: hidden;
     background-color: rgba(0, 0, 0, 1);
 }
-#start-screen {
+#start-box {
   position: absolute;
-  top: 10%;
-  left: 45vmin;
   color: rgba(255, 255, 255, 1);
   opacity: 1;
   transition: opacity 2s;
