@@ -81,6 +81,11 @@ body, html {
   border-radius: 1vmax;
   user-select: none;
   outline: none;
+  box-shadow: 0 0.5vmax rgb(221, 221, 221);
+}
+.button:active {
+  box-shadow: 0 0.3vmax rgb(102, 102, 102);
+  transform: translateY(4px);
 }
 #reset {
   visibility: hidden;

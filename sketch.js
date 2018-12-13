@@ -35,6 +35,9 @@ function initialize() {
 initialize();
 
 function startGame () {
+  if (playSound){
+    tick.play();
+  }
   changeCSSproperty(elements=["start-box", "github"], "display", "none");
   displayGrid();
 }
@@ -95,7 +98,7 @@ function coverCells(event) {
   cells = document.getElementsByClassName("numbered-grid-cell");
   for (let i = 0; i < cells.length; i++){
     cells[i].style.color = "rgba(0, 0, 0, 0)";
-    cells[i].style["background-image"] = "url(imgs/chimp.png)";
+    cells[i].style["background-image"] = "url(imgs/Qbutton.png)";
   }
   firstTouch = true;
 }
@@ -104,12 +107,12 @@ function countCells(event) {
   if (firstTouch) {
     if (event.target.id == "n" + numberCounter.toString()) {
       event.target.style.visibility = "hidden";
-      if (playSound === true){
+      if (playSound){
         tick.play();
       }
       if (event.target.id == "n9") {
         endTime = new Date();
-        if (playSound === true) {
+        if (playSound) {
           applause.play();
         }
         changeCSSproperty(elements=["win", "reset", "time"], "visibility",
@@ -122,7 +125,7 @@ function countCells(event) {
         cells[i].style.color = "rgba(0, 0, 0, 0)";
         cells[i].style["background-image"] = "none";
       }
-      if (playSound === true) {
+      if (playSound) {
         chimp.play();
       }
       changeCSSproperty(elements=["lose", "reset"], "visibility",
@@ -134,6 +137,9 @@ function countCells(event) {
 }
 
 function resetGrid() {
+  if (playSound){
+    tick.play();
+  }
   document.getElementById("game_grid").innerHTML = "";
   changeCSSproperty(elements=["win", "lose", "time", "reset"],
    "visibility", "hidden");
@@ -148,6 +154,9 @@ function changeCSSproperty(elements=NULL, property="visibility",
 }
 
 function changeSoundState() {
+  if (playSound){
+    tick.play();
+  }
   playSound = !playSound;
   soundButton = document.getElementById("sound");
   if (playSound) {
@@ -158,6 +167,9 @@ function changeSoundState() {
 }
 
 function openFullscreen() {
+  if (playSound){
+    tick.play();
+  }
   fullScreen = !fullScreen;
   fullScreenButton = document.getElementById("full-screen");
   let elem = document.documentElement;
