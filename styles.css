@@ -45,6 +45,8 @@ body, html {
   left: 40%;
   top: 50%;
   height: 25vmax;
+  user-select: none;
+  
 }
 #game_grid {
   display: grid;
@@ -96,6 +98,7 @@ body, html {
   top: 25%;
   left: 30%;
   visibility: hidden;
+  user-select: none;
 }
 #time {
   font-size: 4vmax;
