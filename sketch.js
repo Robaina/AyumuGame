@@ -93,9 +93,9 @@ function getRandomSample(minInt, maxInt, size) {
 
 function coverCells(event) {
   cells = document.getElementsByClassName("numbered-grid-cell");
-  for (cell of cells){
-    cell.style.color = "rgba(0, 0, 0, 0)";
-    cell.style["background-image"] = "url(imgs/chimp.png)";
+  for (let i = 0; i < cells.length; i++){
+    cells[i].style.color = "rgba(0, 0, 0, 0)";
+    cells[i].style["background-image"] = "url(imgs/chimp.png)";
   }
   firstTouch = true;
 }
@@ -118,14 +118,14 @@ function countCells(event) {
       }
     } else {
       cells = document.getElementsByClassName("numbered-grid-cell");
-      for (cell of cells){
-        cell.style.color = "rgba(0, 0, 0, 0)";
-        cell.style["background-image"] = "none";
+      for (let i = 0; i < cells.length; i++){
+        cells[i].style.color = "rgba(0, 0, 0, 0)";
+        cells[i].style["background-image"] = "none";
       }
       if (playSound === true) {
         chimp.play();
       }
-      changeCSSproperty(elements=["loose", "reset"], "visibility",
+      changeCSSproperty(elements=["lose", "reset"], "visibility",
        "visible");
     }
     document.getElementById("reset").disabled= false;
@@ -135,7 +135,7 @@ function countCells(event) {
 
 function resetGrid() {
   document.getElementById("game_grid").innerHTML = "";
-  changeCSSproperty(elements=["win", "loose", "time", "reset"],
+  changeCSSproperty(elements=["win", "lose", "time", "reset"],
    "visibility", "hidden");
   initialize();
 }
