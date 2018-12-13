@@ -24,7 +24,7 @@ if (window.innerWidth > window.innerHeight) {
 } else {
   nrows = maxGridSize;
   ncols = minGridSize;
-  startBox.style.left = "18vmin";
+  startBox.style.left = "16vmin";
   startBox.style.top = "22vmax";
 }
 
