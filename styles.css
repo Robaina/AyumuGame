@@ -66,7 +66,7 @@ body, html {
   background-color: rgba(0, 0, 0, 1);
   margin: 3%;
   height: 94%;
-  margin-left: 8vh;
+  margin-left: 9vh;
 }
 #reset {
   visibility: hidden;
@@ -83,8 +83,8 @@ body, html {
 .ring {
     border: 2vh solid rgb(159, 159, 159);
     border-radius: 10vmax;
-    height:8vh;
-    width:8vh;
+    height:9vh;
+    width:9vh;
     position: absolute;
     top: 90vh;
     background-color: rgba(255, 255, 255, 0);
