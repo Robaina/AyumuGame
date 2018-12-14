@@ -73,7 +73,6 @@ body, html {
   position: absolute;
   top: 8vmax;
   left: 4%;
-  /* border-top: 3em; */
 }
 #start-screen {
   visibility: hidden;
@@ -84,10 +83,10 @@ body, html {
 .ring {
     border: 2vmax solid rgb(159, 159, 159);
     border-radius: 10vmax;
-    height:10vmax;
-    width:10vmax;
+    height:8vmax;
+    width:8vmax;
     position: absolute;
-    top: 80%;
+    top: 85%;
     background-color: rgba(255, 255, 255, 0);
     user-select: none;
     outline: none;

@@ -9,7 +9,7 @@ let nrows, ncols;
 let minGridSize = 6;
 let maxGridSize = 8;
 let firstTouch, numberCounter, startTime, endTime;
-let chimp = document.getElementById("chimpAudio");
+let chimp = document.getElementById("chimpAudio"); chimp.volume = 0.6;
 let tick = document.getElementById("tickAudio");
 let applause = document.getElementById("applauseAudio");
 let playSound = true;
