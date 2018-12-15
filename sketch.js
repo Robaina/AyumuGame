@@ -15,6 +15,14 @@ let applause = document.getElementById("applauseAudio");
 let playSound = true;
 let fullScreen = false;
 
+// Detect if iOS Safari (fullscreen not supported)
+let isSafari = !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+let iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+if (isSafari && iOS) {
+    document.getElementById("full-screen").style.opacity = 0;
+}
+
 function initialize() {
   // Adjust screen to preferred orientation
   let startBox = document.getElementById("start-box");
